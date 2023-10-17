@@ -1,3 +1,15 @@
-service : {
-    "greet": (text) -> (text) query;
+
+
+type Task = record {
+    "id": nat64;
+    "description": text;
+};
+
+
+service: {
+    "getAll": (offset: opt nat64, limit: opt nat64) -> (vec Task) query;
+    "get": (id: nat64) -> (Task) query;
+    "create": (description: text) -> (Task);
+    "update": (id: nat64, description: text) -> (Task);
+    "delete": (id: nat64) -> ();
 }
